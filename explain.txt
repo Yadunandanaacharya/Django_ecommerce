@@ -1,0 +1,95 @@
+*) created projectecomproject
+*) apps ecomshop, ecomblog
+
+*) made basic settings.
+
+*) go to getbootstrap.com-> documentation -> starter template
+
+*) templates->ecomshop in ecomshop apps
+*) templates->ecomblog in ecomblog apps
+
+*) templates->ecomblog -> index.html paste starter template from getbootstrap in 
+here
+*) runserver, see change design
+*) do the same for ecomshop
+
+*) creating static folder in both apps
+
+*) {% load  static  %}
+in index.html of ecomblog
+<a href="{% static 'ecomblog/firstblog.txt' %}">Click me</a>
+
+this will display elements of that
+
+*) with this I've displayed image
+<img src="{% static 'images/article.png' %}" alt="">
+
+
+*) creating many functions for about, contact, search, productview etc...
+
+*) ===============================
+ecomshop.apps.EcomshopConfig
+Instead of putting app name in settings you can also put above name
+both are same.
+Go to ecomshop->apps-> you'll see class name EcomshopConfig
+so you can mention like "ecomshop.apps.EcomshopConfig"
+you won't get any error.
+=====================================
+
+*) creating models: models will map to database table
+each attribute of model represents database field
+Django documentation
+
+
+*) class Product(models.Model):
+    product_id =   models.AutoField
+
+AutoField: django field reference-> model fiel reference search these things in
+google
+AutoField: intergerfield automatically incremenetes according to availabale ids 
+desc = description
+
+*) python manage.py createsuperuser
+12345678 password
+*) register in admin
+
+========================
+*) homepage in ecomshop: bootstrap-> documentation-> componenets -> navbar
+copy that html codes and paste it in below mentioned location.
+remove ""<h1>Hello, world!, for shop</h1>"" this in index.html 
+paste contenets from bootstrap.
+
+================================================
+=================================================
+Means HERE ITEMS WILL SCROLL FROM LEFT TORIGHT AND RIGHT TO LEFT YOU WILL KEEP TWO BUTTONS TO MOVE
+OR SEE NEXT ITEMS IN ROW, LIKE IN AMAZON WEBSITE IN A SINGLE ROW LIST OF LAPTOPS WILL BE THERE AS
+YOU PRESS ON ">" ITEMS WILL MOVE TO RIGHT MEANS NEXT LAPTOPS WILL COME SO THAT YOU CAN SEE OTHER LAPTOPS.
+
+
+""crowsel in bootstrap""
+After nav bar inserting div tag
+
+<ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1" ></li>
+      <li data-target="#demo" data-slide-to="2" ></li>
+    </ul>
+
+    <!-- Slideshow starts here -->
+    <div class="container carousel-inner no-padding">
+      <div class="col-xs-3 col-sm-3 col-md-3">
+        here copying card from bootstrap and pasting it here
+      </div>
+    </div>
+================
+<div class="col-xs-3 col-sm-3 col-md-3">
+        <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+===================copy and pasting this 3 times
