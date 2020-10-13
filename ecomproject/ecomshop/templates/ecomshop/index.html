@@ -56,10 +56,13 @@ endblock %} {% block body %} {% load static %}
               </div>
             </div>
           </div>
-          {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not
-          forloop.last %}
+          {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
         </div>
-        <div class="carousel-item">{% endif %} {% endfor %}</div>
+        <div class="carousel-item">
+          {% endif %} 
+          
+          {% endfor %}
+        </div>
       </div>
     </div>
 
@@ -99,18 +102,15 @@ endblock %} {% block body %} {% load static %}
     var idstr = this.id.toString();
     console.log(idstr);
     if (cart[idstr] != undefined) {
-      qty = cart[idstr][0] + 1;
-      name = "My Item"
+     
       cart[idstr] = cart[idstr] + 1;
     } else {
-      qty =  1;
-      name = "My Item"
-      cart[idstr] = [qty,name];
+      
+      cart[idstr] = 1;
     }
     updateCart(cart);
     //console.log(cart);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    document.getElementById("cart").innerHTML = Object.keys(cart).length;
+    
   });
   //Popover to the cart
   $("#popcart").popover();
@@ -140,6 +140,7 @@ endblock %} {% block body %} {% load static %}
 
     document.getElementById("popcart").setAttribute("data-content", popstr);
     $("#popcart").popover("show");
+    $.fn.tooltip.Constructor.Default.whiteList.button = [];
   }
 
   function clearCart() {
