@@ -1,37 +1,88 @@
 {% extends 'ecomshop/basic.html' %} 
 {% block css %} 
-        .col-md-3{ 
-          display:
-          inline-block; 
-          margin-left: -4px; 
-        } 
-        .col-md-3 img { 
-          width: 170px; 
-          height: 227px;
-          max-height:242px;
-        } 
-        body .carousel-indicator li{ 
-          background-color: rgb(5, 4,43); 
-        } 
-          body .carousel-indicators{ 
-            bottom: 0; 
-          } 
-          .carousel-indicators .active{
-          background-color: rgb(2, 2, 34); 
-        } 
-        body .carousel-control-prev-icon,
-         body .carousel-control-next-icon{ 
-           background-color:rgb(4, 4, 34); 
+<!-- .col-md-3
+{
+display: inline-block;
+margin-left:-4px;
+}
+.carousel-indicators .active {
+          background-color: blue;
+            }
+
+          .col-md-3 img{
+
+          width: 170px;
+          height: 200px;
           }
-      .carousel-control-prev, 
-      .carousel-control-next{ 
-        top:auto; bottom:auto;
-        padding-top:222px; 
-      } 
-      body .no-padding{ 
-        padding-left: 0; 
-        padding-right: 0; 
-      } 
+
+          body .carousel-indicator li{
+          background-color: blue;
+          }
+
+          body .carousel-indicators{
+          bottom: 0;
+          }
+
+          body .carousel-control-prev-icon,
+          body .carousel-control-next-icon{
+          background-color: blue;
+          }
+
+          .carousel-control-prev,
+          .carousel-control-next{
+          top: auto;
+          bottom: auto;
+          padding-top: 222px;
+          }
+           body .no-padding{
+           padding-left: 0,
+           padding-right: 0;
+           } -->
+
+
+
+
+
+
+
+
+
+           .col-md-3{
+            display: inline-block;
+            margin-left: -4px;        
+          }
+          .col-md-3 img {
+            width: 170px;
+            height: 227px;
+            max-height:242px;
+          }
+          body .carousel-indicator li{
+            background-color: rgb(5, 4, 43);
+          }
+          body .carousel-indicators{
+            bottom: 0;
+          }
+          .carousel-indicators .active{
+            background-color: rgb(2, 2, 34);
+          }
+          body .carousel-control-prev-icon,
+          body .carousel-control-next-icon{
+            background-color:rgb(4, 4, 34);
+          }
+           .carousel-control-prev,
+           .carousel-control-next{
+          top:auto;
+          bottom:auto; 
+          padding-top:222px; 
+          }
+    
+          body .no-padding{
+            padding-left: 0;
+            padding-right: 0;
+          }
+
+
+
 {%endblock %} 
 {% block body %} 
 {% load static %}
@@ -40,10 +91,7 @@
   <h5 class="my-4">Flash Sale{{product.0.category}} - Recommended items</h5>
   <div class="row">
     <!-- Slideshow starts here -->
-    <div
-      id="demo{{forloop.counter}}"
-      class="col carousel slide my-3"
-      data-ride="carousel">
+    <div id="demo{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel"></div>
       <ul class="carousel-indicators">
         <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="0" class="active"></li>
 
@@ -64,14 +112,11 @@
                 </h5>
                 <p class="card-text">{{i.desc|slice:"0:60" }}...</p>
                 <span id="divpr{{i.id}}" class="divpr">
-                  <button id="pr{{i.id}}" class="btn btn-primary cart">
-                    Add to Cart
-                  </button>
-                </span>
-                <a href="/ecomshop/productview/{{i.id}}"
-                  ><button id="qv{{i.id}}" class="btn btn-primary cart">
-                    Quick View
-                  </button></a>
+                  <button id="pr{{i.id}}" class="btn btn-primary cart">Add to Cart</button></span>
+                    
+                  
+                
+                <a href="/ecomshop/productview/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-primary cart">Quick View</button></a>
               </div>
             </div>
           </div>
@@ -86,18 +131,13 @@
     </div>
 
     <!-- left and right controls for the slide -->
-    <a
-      class="carousel-control-prev"
-      href="#demo{{forloop.counter}}"
-      data-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </a>
-    <a
-      class="carousel-control-next"
-      href="#demo{{forloop.counter}}"
-      data-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </a>
+    <a class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev"></a><span class="carousel-control-prev-icon"></span> </a>
+    <a class="carousel-control-next"  href="#demo{{forloop.counter}}" data-slide="next"></a><span class="carousel-control-next-icon"></span> </a>
+      
+     
+      
+      
+   
   </div>
   {% endfor %} {% endblock %}
 </div>
@@ -109,7 +149,7 @@
     var cart = {};
   } else {
     cart = JSON.parse(localStorage.getItem("cart"));
-    document.getElementById("cart").innerHTML = Object.keys(cart).length;
+    //document.getElementById("cart").innerHTML = Object.keys(cart).length;
     updateCart(cart);
   }
 
@@ -119,33 +159,32 @@
     var idstr = this.id.toString();
     console.log(idstr);
     if (cart[idstr] != undefined) {
-     
       cart[idstr] = cart[idstr] + 1;
     } else {
       
       cart[idstr] = 1;
     }
     updateCart(cart);
+    document.getElementById("cart").innerHTML = Object.keys(cart).length;
     //console.log(cart);
     
-  });
+});
   //Popover to the cart
-  $("#popcart").popover();
+$("#popcart").popover();
   //<h5>Cart</h5> displayed below cart
-  updatepopover(cart);
-  function updatepopover(cart) {
-    console.log("Update popover");
-    var popstr = "";
-    popstr =popstr +"<h5>Cart for your items in Shooping</h5><div class=' mx-2 my-2'>";
-    var i = 1;
-    for (item in cart) {
-      popstr = popstr + "<b>" + i + "</b>. ";
-      popstr =popstr +document.getElementById("name" + item).innerHTML.slice(0, 9) +"..Qty: " +cart[item] +"<br>";
-      i = i + 1;
+updatepopover(cart);
+function updatepopover(cart) {
+  console.log("Update popover");
+  var popstr = "";
+  popstr =popstr +"<h5>Cart for your items in Shooping</h5><div class='mx-2 my-2'>";
+  var i = 1;
+  for (var item in cart) {
+    popstr = popstr + "<b>" + i + "</b>. ";
+    popstr =popstr +document.getElementById("name" + item).innerHTML.slice(0, 9) +"..Qty: " +cart[item] +"<br>";
+    i = i + 1;
     }
-    popstr =popstr +"</div> <a href='/ecomshop/checkout'><button  class='btn btn-primary' id='checkout'>Checkout</button></a><button class='btn btn-primary'  onclick='clearCart()' id='clearCart'>Clear Cart</button>   ";
-    //  popStr = popStr + "</div> <a href='/shop/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a> <button class='btn btn-primary' onclick='clearCart()' id ='clearCart'>Clear Cart</button>     "
-
+    popstr = popstr + "</div> <a href='/ecomshop/checkout'><button class='btn btn-primary' id ='checkout'>Checkout</button></a><button class ='btn btn-primary' onclick='clearCart()' id ='clearCart'>Clear Cart</button>   ";
+    
     document.getElementById("popcart").setAttribute("data-content", popstr);
     $("#popcart").popover("show");
     $.fn.tooltip.Constructor.Default.whiteList.button = [];
