@@ -1,0 +1,491 @@
+*) In this project use MySql don't use inbuilt sqlite3.
+
+*) In settings.py: 'ecommerceapp.apps.StoreConfig',
+this will give error instead use:
+'ecommerceapp.apps.EcommerceappConfig',
+
+*) Create templates->ecommerceapp folder inside ecommerceapp app.
+
+*) Main, Store, Cart, Checkout.html files inside templates in ecommerceapp app.
+
+*) Adding urls and views in ecommerceapp and including app in 
+project url 
+
+*) Create static folder in main directory
+inside that Create css and images folder
+
+*) Adding
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'static')
+]
+By adding this in base that is in main directory program will look for
+
+*) Linking and loading static files to all template files.
+Inside ecommercestore.html  do these
+
+{% load static %}
+Add below line after title
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css %}">
+
+Static will look into css folder for main.css
+
+*) Adding image:
+<img src="{% static 'images/cart.jpg' %}" alt="">
+putting this code ecommercestore.html
+
+*) now remove everything 
+And go to main.html 
+adding main.css link
+Next adding bootstarp.
+go to getbootstrap.com
+
+Changing position of {load static} putting it after doctype.html
+Adding below things
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/main.css%}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+Under body at the end add below these things you'll het it from getbootstrap.com
+website
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+
+*)
+adding block and endblock
+to do this create a div tag with class named container
+
+<div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+Above div tag add 
+We need to make sure that all our pages will inherit from I'm main file
+
+ <h1>I'm main file</h1>
+
+ *) go to ecommercestore.html file
+ {% extends 'ecommerceapp/main.html' %}
+{% load static %}
+{% block content %}
+
+body
+{%endblock%}
+By adding above things contents of main.html file will be inherited to 
+ecommercestore.html file you can see I'm main file text in ecommercestore.html
+
+*) Do the samething for Checkout and cart.html
+
+*) Next adding bootstrap navbar
+https://getbootstrap.com/docs/4.0/components/navbar/#supported-content
+Visit this site copy navbar code
+Paste that in that place where you have typed
+<h1>I'm main file</h1> this is called placeholder.
+
+After putting navbar you'll see home,link, dropdown in your web page.
+
+*) navbar is in light color so we need to convert it to black color
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+*) Chnaging name of navbar to Acharkart
+By doing cjanges in main.html under body under nav tag
+adding url
+<a class="navbar-brand" href="{% url 'mainstore'%}">Acharkart</a>
+
+Similarly changing 
+Home to Store
+<a class="nav-link" href="{% url 'mainstore'%}">Store<span cl
+
+
+
+Removed below contents from inside nav code:
+    <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+
+
+*) next remove form tag and adding diferent contents
+I simply wated time on web page due to only one reason that is
+"I zoomed web page so only Navbar text was displaying nothing else"
+But everything was correct.
+
+*) Now cart symbol is visible so large to minimize it we will use css
+
+*) Chnaged styles using css.
+
+*) Under ecommercestore.html now we need to put images in row wise
+So creating one row and 3 columns with below code.
+ <div class="row">
+        <div class="col-lg-4">
+            
+        </div>
+    </div>
+
+printing <div class="col-lg-4">
+            
+        </div> this for 3 times to get 3 columns.
+
+*) adding placeholder images to that boxes.
+Next adding button for middled Product
+Adding bootstrap for that
+
+*) Copy and paste this button all placeholders
+ <button class="btn btn-outline-secondary add-btn">Add to cart</button>
+ Now add to cart button is added
+
+*) Adding view and price button hardcoding value
+₹20
+<a class="btn btn-outline-success" href="#">View</a>
+<h4 style="display: inline-block; float:right">₹300</h4>
+By doing "display: inline-block; float:right" this 
+Add to cart, view, and rupess 300 will look in a single line.
+
+
+*) All styles mentioned in main.css
+=======================CART===========================
+*) Changing cart.html file
+Where all added items will be there, checkout button will be there, table 
+of items will be there.
+*) downwar and upword arrows to add or delete items
+
+*) toptal.com/designers/htmlarrows/
+this website will give different arrows to move back or front
+In that code will be there you can use it in your html code.
+href="&#x2190;"  backword symbol code in html
+
+*) <br>
+   <br>
+   <table class="table">
+    <tr>
+    <th><h5>Items: <strong>3</strong></h5></th>
+    <th><h5>Items: <strong>₹3003</strong></h5></th>
+    <th>
+    <a style="float: right;margin:5px"  class="btn btn-success" href="{% url 'checkout'%}">Checkout</a>
+    </th>
+br for line break, adding table and adding items and total to the table
+And also checkout 
+
+
+Next under another box elemenet typing below html codes
+<div class="box-element">
+            <div class="cart-row">
+                <div style="flex:2" ></div>
+                <div style="flex:2" >Item</div>
+
+Leaving first flex box emepty because there will be images filled.
+
+ <div style="flex:2" ></div>
+                <div style="flex:2" >Item</div>
+                <div style="flex:1" >Price</div>
+                <div style="flex:1" >Total</div>
+These will be displayed like in single row as you see in amazon
+By using strong making item text look bold.
+
+*) Adding placeholder for item price and total 
+placeholder means dummy variable, it's planning to look like what we want
+
+<div style="flex:2" ><img src="{% static 'images/placeholder1.png' %}" alt=""></div>
+Corresponding to first div tag where we have kept empty adding placeholder image
+there.
+
+*) img class="row-image
+adding class to image which is mentioned in main.css file
+
+At the last div tag we need to add two images that is arrow up and down means
+to add or delete
+
+*) <div style="flex:1" >
+                    <p class="quantity">2</p>
+                    <div class="quantity">
+                        <img class="chg-quantity" src="{% static 'images/arrow-up.png'  %}" alt="">
+                        <img class="chg-quantity" src="{% static 'images/arrow-down.png'  %}" alt="">
+                    </div>
+                </div>
+                <div style="flex:1" >₹60</div>
+
+Under image up and down are there
+at then end div tag total price 60 mentioned for 2 , 30 rupess item product
+
+
+*) checkout page like when you press on checkout it will redirect to 
+checkout.
+With different id and class creating different div tag
+later adding form inside 1st div tag
+<div id="user-info">
+
+                </div>
+                <div id="shipping-info">
+
+                </div>
+after div tag adding hr means line break and creating one input button
+
+
+*) <div class="form-field">
+							<input required class="form-control" type="text" name="name" placeholder="Name..">
+						</div>
+						<div class="form-field">
+							<input required class="form-control" type="email" name="email" placeholder="Email..">
+</div>
+pasting other fields here
+with class name form-field there is tyling added in main.css
+Now you can check web page, where name and email field is added.
+
+==========================adding shipping info==================
+*) adding 
+<hr>
+						<p>Shipping Information:</p>
+						<hr>
+						<div class="form-field">
+							<input class="form-control" type="text" name="address" placeholder="Address..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="city" placeholder="City..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="state" placeholder="State..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
+						</div>
+						<div class="form-field">
+							<input class="form-control" type="text" name="country" placeholder="Zip code..">
+						</div>
+in shipping info div field
+
+
+*) In vscode or any editor 
+<- see left side here when you hover mouse on 274 number in that row when 
+you see up some downward arrow will be visible if you click on that 
+it will hide all those.
+Same thing I have done in checkout.html file, sometime if we have to type
+some html code that is creating div tag inside another div tag.
+
+*) <div class="box-element hidden" id="payment-info">
+We are adding hidden option for payment that is for paypal option
+because once user presses on contionue then only we need to move payment section.
+
+
+*) Adding back to cart
+<a  class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Back to Cart</a>
+for third box-elemenet contained in div tag.
+
+
+*) adding cart row class
+================================================================================
+================================================================================
+================================================================================
+================================================================================
+Database model:
+
+    User:
+         Username                             -  Shipping adress:
+         firstname                        -                 customer
+         lastname                     -                     order
+         email                   -                          address
+    Customer:                 -                             city
+        user             -                                  state
+        name         -                                      zipcode
+        email     -                                         date_added
+              -                      
+    Order:-                       order_item:                 product:
+        Customer                            product                 name
+        date_ordered   ==============       order   = = = = =       price
+        complete_transaction_id             quantity                digital
+                                            date_added              image
+
+
+Customer model: Contains 3 attributes
+User: onetone relationsphips to the user model
+name : charfield
+email: charfield
+
+Typed product model
+
+Next order class:
+customer: used foreignkey: relationship to customer that is many to one relationship,
+that means customer can have multiple orders
+
+complete: if complete is false, that is an open cart we can continue adding items
+to the cart. I f that's true this is closed cart, we need to create items and
+add on to diferent ordrers, it just changes status of record.
+
+transaction_id: helps to add extra information to our order
+
+class Order(models.Model):
+    customer = models.ForeignKey(Customer,on_delete=models.SET_NULL,null=True,blank=True)
+
+Setting relationship b/w order and Customer, setting on_delete to null
+if a customer gets deleted we don't want to delete the order, we jst to want
+to set the customer value to null.
+
+Shipping addres sclass:
+ having customer because even though customer gets deleted I want to save Shipping
+ address as it it.
+
+
+
+ =====================
+ admin.py 
+ admin.site.register(Customer)
+admin.site.register(Product)
+admin.site.register(Order)
+admin.site.register(OrderItem)
+admin.site.register(ShippingAddress)
+
+add above things which you have done in models.py
+creating super user
+python manage.py createsuperuser
+with username: yadua
+
+When you register in admin.py all names like customer, product, item etc 
+then only you can see them in admin panel or else you can't see them.
+
+Add products in product section in admin panel
+
+*) rendering products in template
+In our app-> in views.py file
+
+def ecommercestore(request):
+    products = product.objects.all()
+    context={'products':products}
+    return render(request, 'ecommerceapp/ecommercestore.html', context)
+
+
+*) go to ecommercestore.html here replace some of the placeholder values.
+ {% for product in products %}
+ after adding for loop when you refresh your web page
+ you'll see 6 producst sin web page
+
+ <h4 style="display: inline-block; float:right">₹{{product.price|floatformat:2}}</h4>
+            
+ pipe adding you have read about pipe in overiq website.
+ floatformat after integre 2 decimal field
+
+
+*) don't save images in static file, store it somewhere in desktop because
+it is dynamic files.
+
+
+*) add image field to product model
+image = models.ImageField(null=True, blank=True)
+    
+*) now when you upload it should get saved in media urls
+so change settings for that 
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
+while giving this path, you uploaded images wil be saved in static/images
+
+While searching in browser for particlular image with it's name it should
+come for that again we need to do some setting in settings.py
+MEDIA_URL = '/images/'
+
+*)
+In urls.py of project you need to import settings
+
+from django.conf.urls.static import static
+from django.conf import settings
+
+and also
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+we are grabbing media_url and we are setting that to MEDIA_ROOT which points to 
+static file
+
+because of above if you search in google http://127.0.0.1:8000/images/shoes.jpg
+you will see shoes imageq
+
+
+*) render images measn : displaying images with respect to their name.
+go to ecommercestore.html
+
+*) you are seeing two extra boxes in web pages because of ecommercestore
+I have commeneted those sections.
+
+
+*) When product is there but image is there try this by deleting image in 
+admin when you refresh you'll get error.
+for this we need to create one function
+
+The 'image' attribute has no file associated with it."
+
+Above is error because in ecommercestore you have mentioned product.image.url
+so
+
+creating function in models.py
+@property
+    def wheNoimageUpload(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
+
+chaned in ecommercestore 
+ <img class="thumbnail" src="{{product.wheNoimageUpload}}" >
+
+
+every time make changes to models migrate it.
+
+Now watch image field is empty
+
+==========================
+*) admin panel-> create customer
+Created customer with my name and email id which is one to one relationship.
+
+
+*) added item and changed oreder item in admin panel
+now we need to render them into cart
+Changing dummy data in cart.html to original data
+
+go to views.py, in cart function
+if user is authenticated, set the customer value, we can access the 
+one to one relationship after this we need to get customers order 
+
+order, created = Order.objects.get_or_create()
+
+we do by above way: "get_or_create()"  you can search i google for
+get_or_create django, it's like creating object and querying o nce  
+if you, in documentation you can see try except function
+
+passed attributes:
+get_or_create(customer=customer,complete=False)
+attributes of customer, customer is our customer
+
+*) items = order.orderitem_set.all()
+getting items attched to the order
+here we are querying child objects by setting parent value then child object
+with all our case values
+
+*) else if user is not authenticated returning empty list
+passing it to context={'items':items}
+
+*) next adding or rendering cart.html
+Values will be Imageurl, Product name,  Price,  quantity
+
+creting for just above the div tag with cart row.
+
+====================
+""""""Some error in cart request view part""""""
+====================
+
+
+
+
+Continuing
+    

@@ -1,0 +1,27 @@
+IMPORTANT: aFTER installing django when you'll ren code "django-admin.py"
+you'll get error "django is not recognized as internal command"
+
+Previously or by default python will be installed in the path:
+c:users\yadua\appdata\roaming\python\(scripts and site packages)
+With this above path I have tried many times where I was getting error.
+
+So later I deleted all python files including "pip" in "c:users\yadua" path.
+
+Now I have installed python in "C:/Python3.9" directly I have named it wrong, but don't ever try to
+change this name also, it's saved in system path.
+
+IMPORTANT: SO after installing Python directly in C folder and installing django through pip
+I'm not getting any error while exceuting code "django-admin.py"
+
+
+Standalone api and Standalone spa(single page app)
+
+Cretated virtual environment: py -m venv djangoprojects
+
+Activating virtual env:
+PS C:\Users\yadua> .\djangoprojects\Scripts\activate
+(djangoprojects) PS C:\Users\yadua>
+
+".\djangoprojects\Scripts\activate"
+
+

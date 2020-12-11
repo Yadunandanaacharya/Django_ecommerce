@@ -1,0 +1,14 @@
+step1: django-admin startproject Arts
+step2: change your directory to Arts if it outside.
+step3: python manage.py runserver
+Important: step3 is very very important in your whole process you sshould runserver
+more times not executing. When you execute every time every program like
+running urls.py or views.py definitely you'll get error.
+One more thing django is server side program.
+
+So I will recommend not to exceute program instead, when you will "save" each time 
+you will change the program, server will get restart. 
+
+step4: python manage.py startapp musics (creating app)
+step5: creating urls.py and making changes in views.py under musics app
+Step6: save program each time so that server will restart.
